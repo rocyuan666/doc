@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #5e6d82;
+}
+#app {
+  margin: 0 10px;
+}
+.desc {
+  padding: 20px 0;
+  text-align: center;
+  line-height: 1.8;
+}
+.icon-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.icon-item {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+.roc-icon {
+  font-size: 66px;
+}
+.icon-name {
+  font-size: 12px;
+  text-align: center;
+  padding-top: 10px;
+}
+table {
+  max-width: 1000px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+table th,
+table td {
+  padding: 0 10px;
+}
+.btn-box {
+  width: 100%;
+  display: flex;
+  font-size: 12px;
+  padding-top: 10px;
+}
+.btn-box a {
+  display: block;
+  height: 26px;
+  line-height: 26px;
+  flex: 1;
+  margin: 0 2px;
+  background-color: #2979ff;
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+}
+.btn-box a:hover {
+  background-color: #2b85e4;
+}
+.nav-box {
+  position: fixed;
+  left: 0;
+  top: 30%;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: left;
+  font-size: 14px;
+}
+.nav-box p{
+  padding: 6px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.nav-box a{
+  display: block;
+  text-decoration: none;
+  padding: 10px 10px;
+}
+.nav-box a:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+}

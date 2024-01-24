@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>roc-icon</title>
+    <link rel="stylesheet" href="./css/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./css/common.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="desc">
+        <h1>roc-icon</h1>
+        <p>基于 font-awesome4.7.0 ，共计 {{ faClassList.length }} 个图标</p>
+        <h2>参数说明</h2>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>说明</th>
+              <th>类型</th>
+              <th>默认值</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="prop in rocIconProps" :key="prop.param">
+              <td>{{ prop.param }}</td>
+              <td>{{ prop.desc }}</td>
+              <td>{{ prop.type }}</td>
+              <td>{{ prop.default }}</td>
+            </tr>
+        </table>
+        <h2>使用示例</h2>
+        <code>&lt;roc-icon name="user" :size="20" color="#f99" :rotate="90" animationType="spin"&gt;&lt;/roc-icon&gt;</code>
+        <div>效果：<i class="fa fa-user fa-rotate-90 fa-spin" style="font-size: 20px;color: #f99;"></i></div>
+      </div>
+      <div class="icon-wrap">
+        <div class="icon-item" v-for="faClass in faClassList" :key="faClass">
+          <i class="roc-icon fa" :class="faClass"></i>
+          <p class="icon-name">{{ faClass.replace('fa-', '') }}</p>
+          <div class="btn-box">
+            <a href="javascript:;" @click="copy($event, faClass.replace('fa-', ''))">复制名称</a>
+            <a href="javascript:;" @click="copyComponent($event, faClass.replace('fa-', ''))">复制组件</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <script src="./js/vue.global.prod.js"></script>
+    <script src="./js/fa.4.7.0.data.js"></script>
+    <script src="./js/clipboard.js"></script>
+    <script src="./js/toast.js"></script>
+    <script>
+      function setup() {
+        const rocIconProps = [
+          {
+            param: 'name',
+            desc: '名称，去掉fa-',
+            type: 'String',
+            default: '必传',
+          },
+          {
+            param: 'size',
+            desc: '大小，单位px',
+            type: 'Number | String',
+            default: '16',
+          },
+          {
+            param: 'color',
+            desc: '颜色',
+            type: 'String',
+            default: '#606266',
+          },
+          {
+            param: 'rotate',
+            desc: '旋转，仅支持 90 180 270',
+            type: 'Number | String',
+            default: '无',
+          },
+          {
+            param: 'animationType',
+            desc: '动画类型，spin(平滑旋转) pulse(非平滑旋转)',
+            type: 'String',
+            default: '无',
+          },
+        ]
+        /**
+         * 复制组件代码
+         */
+        function copyComponent(event, text) {
+          const cpn = `<roc-icon name="${text}"></roc-icon>`
+          copy(event, cpn)
+        }
+        /**
+         * 复制
+         */
+        function copy(event, text) {
+          const clipboard = new ClipboardJS(event.target, {
+            text: () => text,
+          });
+          clipboard.on("success", () => {
+            Toast(`复制成功 ${text}`)
+            clipboard.destroy();
+          });
+          clipboard.on("error", () => {
+            Toast(`复制失败 ${text}`)
+            clipboard.destroy();
+          });
+          clipboard.onClick(event);
+        }
+        /**
+         * 显示Toast
+         * @param {string} msg 显示的文本
+         * @param {number} duration 显示时间
+         */
+        function Toast(msg, duration) {
+          duration = isNaN(duration) ? 1500 : duration;
+          var m = document.createElement("div");
+          m.innerText = msg;
+          m.style.cssText =
+            "max-width:60%;min-width: 150px;padding:0 14px;height: 40px;color: rgb(255, 255, 255);line-height: 40px;text-align: center;border-radius: 4px;position: fixed;top: 40%;left: 50%;transform: translate(-50%, -50%);z-index: 999999;background: rgba(0, 0, 0,.7);font-size: 16px;";
+          document.body.appendChild(m);
+          setTimeout(function () {
+            var d = 0.5;
+            m.style.webkitTransition = "-webkit-transform " + d + "s ease-in, opacity " + d + "s ease-in";
+            m.style.opacity = "0";
+            setTimeout(function () {
+              document.body.removeChild(m);
+            }, d * 1000);
+          }, duration);
+        }
+        return {
+          faClassList: faClassList.sort(),
+          rocIconProps,
+          copy,
+          copyComponent,
+        };
+      }
+      const app = Vue.createApp({ setup: setup });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
