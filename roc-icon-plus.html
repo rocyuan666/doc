@@ -15,8 +15,8 @@
         <a href="#fab">brands(品牌)</a>
       </div>
       <div class="desc">
-        <h1>roc-icon-plus</h1>
-        <p>基于 fontawesome-free-6.5.1 ，fontawesome免费版本可用三种风格，分别为: solid（fas 实心），regular（far 常规），brands（fab 品牌）。</p>
+        <h1>roc-icon6</h1>
+        <p>有 vue3 和 uniapp 两种版本，导入后使用方法一模一样；基于 fontawesome-free-6.5.1 ，fontawesome免费版本可用三种风格，分别为: solid（fas 实心），regular（far 常规），brands（fab 品牌）。</p>
         <p>所有图标都有实心风格，常规风格的图标只包含了一小部分，不是所有的图标都有regular风格的版本。</p>
         <p>solid（fas 实心）: {{ fasClassList.length }} 个</p>
         <p>brands（fab 品牌）: {{ fabClassList.length }} 个</p>
@@ -26,6 +26,15 @@
           <p>下图截自官方文档：(regular官方pro版本支持，实际有一小部分是支持的)</p>
           <img style="border: 1px solid #333; width: 100%;" src="./images/fa.jpg" alt="官方免费图标风格" />
         </div>
+        <h2>导入使用</h2>
+        <h3>vue3:</h3>
+        <p>npm install roc-icon6</p>
+        <p>import RocIconPlus from 'roc-icon6'</p>
+        <p>import 'roc-icon6/dist/assets/css/index.css'</p>
+        <p>app.use(RocIconPlus)</p>
+        <h3>uniapp:</h3>
+        <p>下载插件并导入HBuilderX: <a style="color: #2979ff;" target="_blank" href="https://ext.dcloud.net.cn/plugin?id=15798">https://ext.dcloud.net.cn/plugin?id=15798</a></p>
+        <p>import RocIconPlus from 'roc-icon-plus'</p>
         <h2>参数说明</h2>
         <table border="1">
           <thead>
